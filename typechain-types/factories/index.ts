@@ -2,4 +2,5 @@
 /* tslint:disable */
 /* eslint-disable */
 export * as openzeppelin from "./@openzeppelin";
+export * as somniaChain from "./@somnia-chain";
 export * as contracts from "./contracts";

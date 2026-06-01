@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.24;
+pragma solidity 0.8.30;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "../libraries/PaymentLib.sol";
@@ -10,15 +10,29 @@ contract PaymentIntentRegistry is Ownable {
     mapping(bytes32 => PaymentLib.PaymentIntent) private _intents;
     mapping(bytes32 => PaymentLib.Recipient[]) private _recipients;
 
+    address public authorizedCaller;
+
     event PaymentIntentCreated(bytes32 indexed intentId, address indexed payer, uint256 amount);
     event StatusUpdated(bytes32 indexed intentId, PaymentLib.Status newStatus);
+    event AuthorizedCallerSet(address indexed caller);
 
     error IntentAlreadyExists(bytes32 intentId);
     error IntentNotFound(bytes32 intentId);
     error InvalidStatusTransition(PaymentLib.Status current, PaymentLib.Status next);
     error DeadlineInPast();
+    error NotAuthorized();
+
+    modifier onlyAuthorized() {
+        if (msg.sender != owner() && msg.sender != authorizedCaller) revert NotAuthorized();
+        _;
+    }
 
     constructor() Ownable(msg.sender) {}
+
+    function setAuthorizedCaller(address _caller) external onlyOwner {
+        authorizedCaller = _caller;
+        emit AuthorizedCallerSet(_caller);
+    }
 
     function createIntent(
         address token,
@@ -33,6 +47,7 @@ contract PaymentIntentRegistry is Ownable {
         intentId = keccak256(
             abi.encodePacked(msg.sender, token, amount, block.timestamp, block.prevrandao)
         );
+
         if (_intents[intentId].createdAt != 0) revert IntentAlreadyExists(intentId);
 
         PaymentLib.PaymentIntent storage intent = _intents[intentId];
@@ -53,7 +68,7 @@ contract PaymentIntentRegistry is Ownable {
         emit StatusUpdated(intentId, PaymentLib.Status.CREATED);
     }
 
-    function updateStatus(bytes32 intentId, PaymentLib.Status newStatus) external onlyOwner {
+    function updateStatus(bytes32 intentId, PaymentLib.Status newStatus) external onlyAuthorized {
         PaymentLib.PaymentIntent storage intent = _intents[intentId];
         if (intent.createdAt == 0) revert IntentNotFound(intentId);
         _validateTransition(intent.status, newStatus);
@@ -61,7 +76,9 @@ contract PaymentIntentRegistry is Ownable {
         emit StatusUpdated(intentId, newStatus);
     }
 
-    function getIntent(bytes32 intentId) external view returns (PaymentLib.PaymentIntent memory intent, PaymentLib.Recipient[] memory recipients) {
+    function getIntent(
+        bytes32 intentId
+    ) external view returns (PaymentLib.PaymentIntent memory intent, PaymentLib.Recipient[] memory recipients) {
         if (_intents[intentId].createdAt == 0) revert IntentNotFound(intentId);
         intent = _intents[intentId];
         recipients = _recipients[intentId];
@@ -79,8 +96,8 @@ contract PaymentIntentRegistry is Ownable {
         if (current == PaymentLib.Status.SETTLED && next == PaymentLib.Status.VERIFIED) return;
         if (
             (current == PaymentLib.Status.CREATED ||
-             current == PaymentLib.Status.PLANNED ||
-             current == PaymentLib.Status.EXECUTOR_SELECTED) &&
+                current == PaymentLib.Status.PLANNED ||
+                current == PaymentLib.Status.EXECUTOR_SELECTED) &&
             next == PaymentLib.Status.FAILED
         ) return;
         revert InvalidStatusTransition(current, next);

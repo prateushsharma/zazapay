@@ -30,6 +30,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC721Errors__factory>;
     getContractFactory(
+      name: "IERC1363",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC1363__factory>;
+    getContractFactory(
       name: "ERC20",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ERC20__factory>;
@@ -42,6 +46,38 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC20__factory>;
     getContractFactory(
+      name: "SafeERC20",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.SafeERC20__factory>;
+    getContractFactory(
+      name: "IERC165",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC165__factory>;
+    getContractFactory(
+      name: "ReentrancyGuard",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ReentrancyGuard__factory>;
+    getContractFactory(
+      name: "IERC165",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC165__factory>;
+    getContractFactory(
+      name: "ISomniaEventHandler",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ISomniaEventHandler__factory>;
+    getContractFactory(
+      name: "ISomniaReactivityPrecompile",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ISomniaReactivityPrecompile__factory>;
+    getContractFactory(
+      name: "SomniaExtensions",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.SomniaExtensions__factory>;
+    getContractFactory(
+      name: "SomniaEventHandler",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.SomniaEventHandler__factory>;
+    getContractFactory(
       name: "AgentRegistry",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.AgentRegistry__factory>;
@@ -50,9 +86,65 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.MockERC20__factory>;
     getContractFactory(
+      name: "IAgentRegistry",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IAgentRegistry__factory>;
+    getContractFactory(
+      name: "IAgentRequester",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IAgentRequester__factory>;
+    getContractFactory(
+      name: "IJsonApiAgent",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IJsonApiAgent__factory>;
+    getContractFactory(
+      name: "IPaymentIntentRegistry",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IPaymentIntentRegistry__factory>;
+    getContractFactory(
+      name: "NegotiationGateway",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.NegotiationGateway__factory>;
+    getContractFactory(
       name: "PaymentIntentRegistry",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.PaymentIntentRegistry__factory>;
+    getContractFactory(
+      name: "IAgentRegistry",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IAgentRegistry__factory>;
+    getContractFactory(
+      name: "PaymentReceiptRegistry",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.PaymentReceiptRegistry__factory>;
+    getContractFactory(
+      name: "IAgentRequester",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IAgentRequester__factory>;
+    getContractFactory(
+      name: "ILLMAgent",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ILLMAgent__factory>;
+    getContractFactory(
+      name: "IPaymentIntentRegistry",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IPaymentIntentRegistry__factory>;
+    getContractFactory(
+      name: "PlannerGateway",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.PlannerGateway__factory>;
+    getContractFactory(
+      name: "IAgentRegistry",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IAgentRegistry__factory>;
+    getContractFactory(
+      name: "IPaymentIntentRegistry",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IPaymentIntentRegistry__factory>;
+    getContractFactory(
+      name: "SettlementEngine",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.SettlementEngine__factory>;
     getContractFactory(
       name: "PaymentLib",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -79,6 +171,11 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IERC721Errors>;
     getContractAt(
+      name: "IERC1363",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC1363>;
+    getContractAt(
       name: "ERC20",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -94,6 +191,46 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IERC20>;
     getContractAt(
+      name: "SafeERC20",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.SafeERC20>;
+    getContractAt(
+      name: "IERC165",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC165>;
+    getContractAt(
+      name: "ReentrancyGuard",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ReentrancyGuard>;
+    getContractAt(
+      name: "IERC165",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC165>;
+    getContractAt(
+      name: "ISomniaEventHandler",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ISomniaEventHandler>;
+    getContractAt(
+      name: "ISomniaReactivityPrecompile",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ISomniaReactivityPrecompile>;
+    getContractAt(
+      name: "SomniaExtensions",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.SomniaExtensions>;
+    getContractAt(
+      name: "SomniaEventHandler",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.SomniaEventHandler>;
+    getContractAt(
       name: "AgentRegistry",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -104,10 +241,80 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.MockERC20>;
     getContractAt(
+      name: "IAgentRegistry",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IAgentRegistry>;
+    getContractAt(
+      name: "IAgentRequester",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IAgentRequester>;
+    getContractAt(
+      name: "IJsonApiAgent",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IJsonApiAgent>;
+    getContractAt(
+      name: "IPaymentIntentRegistry",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IPaymentIntentRegistry>;
+    getContractAt(
+      name: "NegotiationGateway",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.NegotiationGateway>;
+    getContractAt(
       name: "PaymentIntentRegistry",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
     ): Promise<Contracts.PaymentIntentRegistry>;
+    getContractAt(
+      name: "IAgentRegistry",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IAgentRegistry>;
+    getContractAt(
+      name: "PaymentReceiptRegistry",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.PaymentReceiptRegistry>;
+    getContractAt(
+      name: "IAgentRequester",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IAgentRequester>;
+    getContractAt(
+      name: "ILLMAgent",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ILLMAgent>;
+    getContractAt(
+      name: "IPaymentIntentRegistry",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IPaymentIntentRegistry>;
+    getContractAt(
+      name: "PlannerGateway",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.PlannerGateway>;
+    getContractAt(
+      name: "IAgentRegistry",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IAgentRegistry>;
+    getContractAt(
+      name: "IPaymentIntentRegistry",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IPaymentIntentRegistry>;
+    getContractAt(
+      name: "SettlementEngine",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.SettlementEngine>;
     getContractAt(
       name: "PaymentLib",
       address: string | ethers.Addressable,
@@ -131,6 +338,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IERC721Errors>;
     deployContract(
+      name: "IERC1363",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IERC1363>;
+    deployContract(
       name: "ERC20",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.ERC20>;
@@ -143,6 +354,38 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IERC20>;
     deployContract(
+      name: "SafeERC20",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.SafeERC20>;
+    deployContract(
+      name: "IERC165",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IERC165>;
+    deployContract(
+      name: "ReentrancyGuard",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ReentrancyGuard>;
+    deployContract(
+      name: "IERC165",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IERC165>;
+    deployContract(
+      name: "ISomniaEventHandler",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ISomniaEventHandler>;
+    deployContract(
+      name: "ISomniaReactivityPrecompile",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ISomniaReactivityPrecompile>;
+    deployContract(
+      name: "SomniaExtensions",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.SomniaExtensions>;
+    deployContract(
+      name: "SomniaEventHandler",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.SomniaEventHandler>;
+    deployContract(
       name: "AgentRegistry",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.AgentRegistry>;
@@ -151,9 +394,65 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.MockERC20>;
     deployContract(
+      name: "IAgentRegistry",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IAgentRegistry>;
+    deployContract(
+      name: "IAgentRequester",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IAgentRequester>;
+    deployContract(
+      name: "IJsonApiAgent",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IJsonApiAgent>;
+    deployContract(
+      name: "IPaymentIntentRegistry",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IPaymentIntentRegistry>;
+    deployContract(
+      name: "NegotiationGateway",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.NegotiationGateway>;
+    deployContract(
       name: "PaymentIntentRegistry",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.PaymentIntentRegistry>;
+    deployContract(
+      name: "IAgentRegistry",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IAgentRegistry>;
+    deployContract(
+      name: "PaymentReceiptRegistry",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.PaymentReceiptRegistry>;
+    deployContract(
+      name: "IAgentRequester",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IAgentRequester>;
+    deployContract(
+      name: "ILLMAgent",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ILLMAgent>;
+    deployContract(
+      name: "IPaymentIntentRegistry",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IPaymentIntentRegistry>;
+    deployContract(
+      name: "PlannerGateway",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.PlannerGateway>;
+    deployContract(
+      name: "IAgentRegistry",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IAgentRegistry>;
+    deployContract(
+      name: "IPaymentIntentRegistry",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IPaymentIntentRegistry>;
+    deployContract(
+      name: "SettlementEngine",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.SettlementEngine>;
     deployContract(
       name: "PaymentLib",
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -180,6 +479,11 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IERC721Errors>;
     deployContract(
+      name: "IERC1363",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IERC1363>;
+    deployContract(
       name: "ERC20",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -195,6 +499,46 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IERC20>;
     deployContract(
+      name: "SafeERC20",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.SafeERC20>;
+    deployContract(
+      name: "IERC165",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IERC165>;
+    deployContract(
+      name: "ReentrancyGuard",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ReentrancyGuard>;
+    deployContract(
+      name: "IERC165",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IERC165>;
+    deployContract(
+      name: "ISomniaEventHandler",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ISomniaEventHandler>;
+    deployContract(
+      name: "ISomniaReactivityPrecompile",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ISomniaReactivityPrecompile>;
+    deployContract(
+      name: "SomniaExtensions",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.SomniaExtensions>;
+    deployContract(
+      name: "SomniaEventHandler",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.SomniaEventHandler>;
+    deployContract(
       name: "AgentRegistry",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -205,10 +549,80 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.MockERC20>;
     deployContract(
+      name: "IAgentRegistry",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IAgentRegistry>;
+    deployContract(
+      name: "IAgentRequester",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IAgentRequester>;
+    deployContract(
+      name: "IJsonApiAgent",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IJsonApiAgent>;
+    deployContract(
+      name: "IPaymentIntentRegistry",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IPaymentIntentRegistry>;
+    deployContract(
+      name: "NegotiationGateway",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.NegotiationGateway>;
+    deployContract(
       name: "PaymentIntentRegistry",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.PaymentIntentRegistry>;
+    deployContract(
+      name: "IAgentRegistry",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IAgentRegistry>;
+    deployContract(
+      name: "PaymentReceiptRegistry",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.PaymentReceiptRegistry>;
+    deployContract(
+      name: "IAgentRequester",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IAgentRequester>;
+    deployContract(
+      name: "ILLMAgent",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ILLMAgent>;
+    deployContract(
+      name: "IPaymentIntentRegistry",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IPaymentIntentRegistry>;
+    deployContract(
+      name: "PlannerGateway",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.PlannerGateway>;
+    deployContract(
+      name: "IAgentRegistry",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IAgentRegistry>;
+    deployContract(
+      name: "IPaymentIntentRegistry",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IPaymentIntentRegistry>;
+    deployContract(
+      name: "SettlementEngine",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.SettlementEngine>;
     deployContract(
       name: "PaymentLib",
       args: any[],

@@ -74,22 +74,29 @@ export declare namespace PaymentLib {
 export interface PaymentIntentRegistryInterface extends Interface {
   getFunction(
     nameOrSignature:
+      | "authorizedCaller"
       | "createIntent"
       | "getIntent"
       | "getStatus"
       | "owner"
       | "renounceOwnership"
+      | "setAuthorizedCaller"
       | "transferOwnership"
       | "updateStatus"
   ): FunctionFragment;
 
   getEvent(
     nameOrSignatureOrTopic:
+      | "AuthorizedCallerSet"
       | "OwnershipTransferred"
       | "PaymentIntentCreated"
       | "StatusUpdated"
   ): EventFragment;
 
+  encodeFunctionData(
+    functionFragment: "authorizedCaller",
+    values?: undefined
+  ): string;
   encodeFunctionData(
     functionFragment: "createIntent",
     values: [
@@ -114,6 +121,10 @@ export interface PaymentIntentRegistryInterface extends Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
+    functionFragment: "setAuthorizedCaller",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
     functionFragment: "transferOwnership",
     values: [AddressLike]
   ): string;
@@ -122,6 +133,10 @@ export interface PaymentIntentRegistryInterface extends Interface {
     values: [BytesLike, BigNumberish]
   ): string;
 
+  decodeFunctionResult(
+    functionFragment: "authorizedCaller",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "createIntent",
     data: BytesLike
@@ -134,6 +149,10 @@ export interface PaymentIntentRegistryInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
+    functionFragment: "setAuthorizedCaller",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "transferOwnership",
     data: BytesLike
   ): Result;
@@ -141,6 +160,18 @@ export interface PaymentIntentRegistryInterface extends Interface {
     functionFragment: "updateStatus",
     data: BytesLike
   ): Result;
+}
+
+export namespace AuthorizedCallerSetEvent {
+  export type InputTuple = [caller: AddressLike];
+  export type OutputTuple = [caller: string];
+  export interface OutputObject {
+    caller: string;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
 
 export namespace OwnershipTransferredEvent {
@@ -230,6 +261,8 @@ export interface PaymentIntentRegistry extends BaseContract {
     event?: TCEvent
   ): Promise<this>;
 
+  authorizedCaller: TypedContractMethod<[], [string], "view">;
+
   createIntent: TypedContractMethod<
     [
       token: AddressLike,
@@ -262,6 +295,12 @@ export interface PaymentIntentRegistry extends BaseContract {
 
   renounceOwnership: TypedContractMethod<[], [void], "nonpayable">;
 
+  setAuthorizedCaller: TypedContractMethod<
+    [_caller: AddressLike],
+    [void],
+    "nonpayable"
+  >;
+
   transferOwnership: TypedContractMethod<
     [newOwner: AddressLike],
     [void],
@@ -278,6 +317,9 @@ export interface PaymentIntentRegistry extends BaseContract {
     key: string | FunctionFragment
   ): T;
 
+  getFunction(
+    nameOrSignature: "authorizedCaller"
+  ): TypedContractMethod<[], [string], "view">;
   getFunction(
     nameOrSignature: "createIntent"
   ): TypedContractMethod<
@@ -316,6 +358,9 @@ export interface PaymentIntentRegistry extends BaseContract {
     nameOrSignature: "renounceOwnership"
   ): TypedContractMethod<[], [void], "nonpayable">;
   getFunction(
+    nameOrSignature: "setAuthorizedCaller"
+  ): TypedContractMethod<[_caller: AddressLike], [void], "nonpayable">;
+  getFunction(
     nameOrSignature: "transferOwnership"
   ): TypedContractMethod<[newOwner: AddressLike], [void], "nonpayable">;
   getFunction(
@@ -326,6 +371,13 @@ export interface PaymentIntentRegistry extends BaseContract {
     "nonpayable"
   >;
 
+  getEvent(
+    key: "AuthorizedCallerSet"
+  ): TypedContractEvent<
+    AuthorizedCallerSetEvent.InputTuple,
+    AuthorizedCallerSetEvent.OutputTuple,
+    AuthorizedCallerSetEvent.OutputObject
+  >;
   getEvent(
     key: "OwnershipTransferred"
   ): TypedContractEvent<
@@ -349,6 +401,17 @@ export interface PaymentIntentRegistry extends BaseContract {
   >;
 
   filters: {
+    "AuthorizedCallerSet(address)": TypedContractEvent<
+      AuthorizedCallerSetEvent.InputTuple,
+      AuthorizedCallerSetEvent.OutputTuple,
+      AuthorizedCallerSetEvent.OutputObject
+    >;
+    AuthorizedCallerSet: TypedContractEvent<
+      AuthorizedCallerSetEvent.InputTuple,
+      AuthorizedCallerSetEvent.OutputTuple,
+      AuthorizedCallerSetEvent.OutputObject
+    >;
+
     "OwnershipTransferred(address,address)": TypedContractEvent<
       OwnershipTransferredEvent.InputTuple,
       OwnershipTransferredEvent.OutputTuple,

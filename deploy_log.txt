@@ -1,0 +1,24 @@
+Deployer: 0x8b69547b7fa91F95fA0279c7F6708879398bfC1A
+Balance: 496.690078456 STT
+
+Redeploying PaymentIntentRegistry...
+PaymentIntentRegistry deployed: 0x83985c6f5572c527e3247f5640c826649aA300fa
+
+Deploying SettlementEngine...
+SettlementEngine deployed: 0xC162ea31883382131a902C9b3C6C12Af2FdF8C9b
+
+Deploying PaymentReceiptRegistry...
+PaymentReceiptRegistry deployed: 0xec7e01574cbcaEcC7cEaDDa6fcA4BA4cfA334503
+
+Wiring contracts...
+SettlementEngine.receiptRegistry set: 0xec7e01574cbcaEcC7cEaDDa6fcA4BA4cfA334503
+PaymentReceiptRegistry.settlementEngine set: 0xC162ea31883382131a902C9b3C6C12Af2FdF8C9b
+PaymentIntentRegistry.authorizedCaller set: 0xC162ea31883382131a902C9b3C6C12Af2FdF8C9b
+
+deployments/testnet.json updated.
+
+=== Chat 2 Deployment Summary ===
+PaymentIntentRegistry:    0x83985c6f5572c527e3247f5640c826649aA300fa
+SettlementEngine:         0xC162ea31883382131a902C9b3C6C12Af2FdF8C9b
+PaymentReceiptRegistry:   0xec7e01574cbcaEcC7cEaDDa6fcA4BA4cfA334503
+=================================
