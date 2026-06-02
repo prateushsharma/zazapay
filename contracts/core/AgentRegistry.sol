@@ -74,4 +74,23 @@ contract AgentRegistry is Ownable {
     function getAllAgents() external view returns (address[] memory) {
         return _agentList;
     }
+
+    function getActiveExecutors() external view returns (address[] memory) {
+        uint256 count = 0;
+        for (uint256 i = 0; i < _agentList.length; i++) {
+            Agent storage a = _agents[_agentList[i]];
+            if (a.active && keccak256(bytes(a.role)) == keccak256(bytes("executor"))) {
+                count++;
+            }
+        }
+        address[] memory result = new address[](count);
+        uint256 idx = 0;
+        for (uint256 i = 0; i < _agentList.length; i++) {
+            Agent storage a = _agents[_agentList[i]];
+            if (a.active && keccak256(bytes(a.role)) == keccak256(bytes("executor"))) {
+                result[idx++] = _agentList[i];
+            }
+        }
+        return result;
+    }
 }

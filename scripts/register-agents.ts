@@ -4,7 +4,7 @@ import { privateKeyToAccount } from "viem/accounts";
 import { somniaTestnet } from "../agents/shared/chain";
 import AgentRegistryArtifact from "../artifacts/contracts/core/AgentRegistry.sol/AgentRegistry.json" assert { type: "json" };
 
-const AGENT_REGISTRY = "0x76c4EEd426Ead6dC780Fa90c0E0F3b763D60652a" as const;
+const AGENT_REGISTRY = "0x1fb017bd45363c1b525e5a4b638ffdb65df51e59" as const;
 
 async function main() {
   const deployerKey = process.env.PRIVATE_KEY as `0x${string}`;

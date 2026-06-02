@@ -153,9 +153,10 @@ contract NegotiationGateway is SomniaEventHandler, Ownable {
         if (emitter != address(registry)) return;
         if (eventTopics.length < 2) return;
         if (eventTopics[0] != keccak256("StatusUpdated(bytes32,uint8)")) return;
-        if (uint256(eventTopics[1]) != uint256(PaymentLib.Status.PLANNED)) return;
+        uint8 newStatus = abi.decode(data, (uint8));
+        if (newStatus != uint8(PaymentLib.Status.PLANNED)) return;
 
-        (bytes32 intentId,) = abi.decode(data, (bytes32, uint8));
+        bytes32 intentId = eventTopics[1];
 
         if (_pendingIntents[intentId]) return;
 

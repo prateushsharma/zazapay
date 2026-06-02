@@ -103,7 +103,7 @@ contract PlannerGateway is SomniaEventHandler, Ownable {
 
     function initSubscription() external onlyOwner {
         bytes32[4] memory topics;
-        topics[0] = keccak256("PaymentIntentCreated(bytes32,address,address,uint256)");
+        topics[0] = keccak256("PaymentIntentCreated(bytes32,address,uint256)");
 
         SomniaExtensions.SubscriptionFilter memory filter = SomniaExtensions.SubscriptionFilter({
             eventTopics: topics,
@@ -127,9 +127,9 @@ contract PlannerGateway is SomniaEventHandler, Ownable {
     ) internal override {
         if (emitter != address(registry)) return;
         if (eventTopics.length == 0) return;
-        if (eventTopics[0] != keccak256("PaymentIntentCreated(bytes32,address,address,uint256)")) return;
+        if (eventTopics[0] != keccak256("PaymentIntentCreated(bytes32,address,uint256)")) return;
 
-        (bytes32 intentId,,,) = abi.decode(data, (bytes32, address, address, uint256));
+        bytes32 intentId = eventTopics[1];
 
         if (_pendingIntents[intentId]) return;
 
