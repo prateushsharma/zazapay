@@ -6,8 +6,8 @@ import { somniaTestnet } from "../agents/shared/chain";
 import AgentRegistryArtifact from "../artifacts/contracts/core/AgentRegistry.sol/AgentRegistry.json" assert { type: "json" };
 import NegotiationGatewayArtifact from "../artifacts/contracts/core/NegotiationGateway.sol/NegotiationGateway.json" assert { type: "json" };
 
-const PLATFORM      = "0xaD3101C37F091593fEe7cb471e92b5E9A1205194";
-const PIR           = "0x83985c6f5572c527e3247f5640c826649aA300fa";
+const PLATFORM      = "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776";
+const PIR           = "0xf7b4f680aaddab9247423e1d833e038c760aa1e6";
 const EXECUTOR_FEED = "https://zazapay-executor-feed.onrender.com/quotes";
 
 const AGENT_A = process.env.AGENT_A_ADDRESS as Address;

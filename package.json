@@ -18,6 +18,11 @@
   "dependencies": {
     "@openzeppelin/contracts": "^5.0.2",
     "@somnia-chain/reactivity-contracts": "^0.2.0",
-    "dotenv": "^16.4.5"
+    "@somnia-chain/streams": "^0.12.2",
+    "@types/express": "^5.0.6",
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1",
+    "tsx": "^4.22.4",
+    "viem": "^2.37.13"
   }
 }

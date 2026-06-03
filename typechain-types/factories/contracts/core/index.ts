@@ -5,6 +5,7 @@ export * as negotiationGatewaySol from "./NegotiationGateway.sol";
 export * as paymentReceiptRegistrySol from "./PaymentReceiptRegistry.sol";
 export * as plannerGatewaySol from "./PlannerGateway.sol";
 export * as settlementEngineSol from "./SettlementEngine.sol";
+export * as verifierGatewaySol from "./VerifierGateway.sol";
 export { AgentRegistry__factory } from "./AgentRegistry__factory";
 export { MockERC20__factory } from "./MockERC20__factory";
 export { PaymentIntentRegistry__factory } from "./PaymentIntentRegistry__factory";

@@ -44,6 +44,8 @@ export declare namespace PaymentLib {
     createdAt: BigNumberish;
     deadline: BigNumberish;
     context: string;
+    selectedExecutor: AddressLike;
+    executorFee: BigNumberish;
   };
 
   export type PaymentIntentStructOutput = [
@@ -55,7 +57,9 @@ export declare namespace PaymentLib {
     status: bigint,
     createdAt: bigint,
     deadline: bigint,
-    context: string
+    context: string,
+    selectedExecutor: string,
+    executorFee: bigint
   ] & {
     intentId: string;
     payer: string;
@@ -66,6 +70,8 @@ export declare namespace PaymentLib {
     createdAt: bigint;
     deadline: bigint;
     context: string;
+    selectedExecutor: string;
+    executorFee: bigint;
   };
 }
 

@@ -10,11 +10,11 @@ contract PaymentIntentRegistry is Ownable {
     mapping(bytes32 => PaymentLib.PaymentIntent) private _intents;
     mapping(bytes32 => PaymentLib.Recipient[]) private _recipients;
 
-    address public authorizedCaller;
+    mapping(address => bool) public authorizedCallers;
 
     event PaymentIntentCreated(bytes32 indexed intentId, address indexed payer, uint256 amount);
     event StatusUpdated(bytes32 indexed intentId, PaymentLib.Status newStatus);
-    event AuthorizedCallerSet(address indexed caller);
+    event AuthorizedCallerSet(address indexed caller, bool authorized);
 
     error IntentAlreadyExists(bytes32 intentId);
     error IntentNotFound(bytes32 intentId);
@@ -23,15 +23,15 @@ contract PaymentIntentRegistry is Ownable {
     error NotAuthorized();
 
     modifier onlyAuthorized() {
-        if (msg.sender != owner() && msg.sender != authorizedCaller) revert NotAuthorized();
+        if (msg.sender != owner() && !authorizedCallers[msg.sender]) revert NotAuthorized();
         _;
     }
 
     constructor() Ownable(msg.sender) {}
 
-    function setAuthorizedCaller(address _caller) external onlyOwner {
-        authorizedCaller = _caller;
-        emit AuthorizedCallerSet(_caller);
+    function setAuthorizedCaller(address _caller, bool _authorized) external onlyOwner {
+        authorizedCallers[_caller] = _authorized;
+        emit AuthorizedCallerSet(_caller, _authorized);
     }
 
     function createIntent(
@@ -66,6 +66,12 @@ contract PaymentIntentRegistry is Ownable {
 
         emit PaymentIntentCreated(intentId, msg.sender, amount);
         emit StatusUpdated(intentId, PaymentLib.Status.CREATED);
+    }
+
+    function setSelectedExecutor(bytes32 intentId, address executor, uint256 fee) external onlyAuthorized {
+        if (_intents[intentId].createdAt == 0) revert IntentNotFound(intentId);
+        _intents[intentId].selectedExecutor = executor;
+        _intents[intentId].executorFee = fee;
     }
 
     function updateStatus(bytes32 intentId, PaymentLib.Status newStatus) external onlyAuthorized {

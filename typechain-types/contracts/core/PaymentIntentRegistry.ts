@@ -46,6 +46,8 @@ export declare namespace PaymentLib {
     createdAt: BigNumberish;
     deadline: BigNumberish;
     context: string;
+    selectedExecutor: AddressLike;
+    executorFee: BigNumberish;
   };
 
   export type PaymentIntentStructOutput = [
@@ -57,7 +59,9 @@ export declare namespace PaymentLib {
     status: bigint,
     createdAt: bigint,
     deadline: bigint,
-    context: string
+    context: string,
+    selectedExecutor: string,
+    executorFee: bigint
   ] & {
     intentId: string;
     payer: string;
@@ -68,19 +72,22 @@ export declare namespace PaymentLib {
     createdAt: bigint;
     deadline: bigint;
     context: string;
+    selectedExecutor: string;
+    executorFee: bigint;
   };
 }
 
 export interface PaymentIntentRegistryInterface extends Interface {
   getFunction(
     nameOrSignature:
-      | "authorizedCaller"
+      | "authorizedCallers"
       | "createIntent"
       | "getIntent"
       | "getStatus"
       | "owner"
       | "renounceOwnership"
       | "setAuthorizedCaller"
+      | "setSelectedExecutor"
       | "transferOwnership"
       | "updateStatus"
   ): FunctionFragment;
@@ -94,8 +101,8 @@ export interface PaymentIntentRegistryInterface extends Interface {
   ): EventFragment;
 
   encodeFunctionData(
-    functionFragment: "authorizedCaller",
-    values?: undefined
+    functionFragment: "authorizedCallers",
+    values: [AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "createIntent",
@@ -122,7 +129,11 @@ export interface PaymentIntentRegistryInterface extends Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "setAuthorizedCaller",
-    values: [AddressLike]
+    values: [AddressLike, boolean]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setSelectedExecutor",
+    values: [BytesLike, AddressLike, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "transferOwnership",
@@ -134,7 +145,7 @@ export interface PaymentIntentRegistryInterface extends Interface {
   ): string;
 
   decodeFunctionResult(
-    functionFragment: "authorizedCaller",
+    functionFragment: "authorizedCallers",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -153,6 +164,10 @@ export interface PaymentIntentRegistryInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
+    functionFragment: "setSelectedExecutor",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "transferOwnership",
     data: BytesLike
   ): Result;
@@ -163,10 +178,11 @@ export interface PaymentIntentRegistryInterface extends Interface {
 }
 
 export namespace AuthorizedCallerSetEvent {
-  export type InputTuple = [caller: AddressLike];
-  export type OutputTuple = [caller: string];
+  export type InputTuple = [caller: AddressLike, authorized: boolean];
+  export type OutputTuple = [caller: string, authorized: boolean];
   export interface OutputObject {
     caller: string;
+    authorized: boolean;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -261,7 +277,11 @@ export interface PaymentIntentRegistry extends BaseContract {
     event?: TCEvent
   ): Promise<this>;
 
-  authorizedCaller: TypedContractMethod<[], [string], "view">;
+  authorizedCallers: TypedContractMethod<
+    [arg0: AddressLike],
+    [boolean],
+    "view"
+  >;
 
   createIntent: TypedContractMethod<
     [
@@ -296,7 +316,13 @@ export interface PaymentIntentRegistry extends BaseContract {
   renounceOwnership: TypedContractMethod<[], [void], "nonpayable">;
 
   setAuthorizedCaller: TypedContractMethod<
-    [_caller: AddressLike],
+    [_caller: AddressLike, _authorized: boolean],
+    [void],
+    "nonpayable"
+  >;
+
+  setSelectedExecutor: TypedContractMethod<
+    [intentId: BytesLike, executor: AddressLike, fee: BigNumberish],
     [void],
     "nonpayable"
   >;
@@ -318,8 +344,8 @@ export interface PaymentIntentRegistry extends BaseContract {
   ): T;
 
   getFunction(
-    nameOrSignature: "authorizedCaller"
-  ): TypedContractMethod<[], [string], "view">;
+    nameOrSignature: "authorizedCallers"
+  ): TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
   getFunction(
     nameOrSignature: "createIntent"
   ): TypedContractMethod<
@@ -359,7 +385,18 @@ export interface PaymentIntentRegistry extends BaseContract {
   ): TypedContractMethod<[], [void], "nonpayable">;
   getFunction(
     nameOrSignature: "setAuthorizedCaller"
-  ): TypedContractMethod<[_caller: AddressLike], [void], "nonpayable">;
+  ): TypedContractMethod<
+    [_caller: AddressLike, _authorized: boolean],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "setSelectedExecutor"
+  ): TypedContractMethod<
+    [intentId: BytesLike, executor: AddressLike, fee: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
   getFunction(
     nameOrSignature: "transferOwnership"
   ): TypedContractMethod<[newOwner: AddressLike], [void], "nonpayable">;
@@ -401,7 +438,7 @@ export interface PaymentIntentRegistry extends BaseContract {
   >;
 
   filters: {
-    "AuthorizedCallerSet(address)": TypedContractEvent<
+    "AuthorizedCallerSet(address,bool)": TypedContractEvent<
       AuthorizedCallerSetEvent.InputTuple,
       AuthorizedCallerSetEvent.OutputTuple,
       AuthorizedCallerSetEvent.OutputObject

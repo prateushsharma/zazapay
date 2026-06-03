@@ -138,7 +138,7 @@ contract NegotiationGateway is SomniaEventHandler, Ownable {
 
         SomniaExtensions.SubscriptionOptions memory options = SomniaExtensions.SubscriptionOptions({
             priorityFeePerGas: 1_000_000_000,
-            maxFeePerGas: 10_000_000_000,
+            maxFeePerGas: 100_000_000_000,
             gasLimit: 3_000_000
         });
 

@@ -9,6 +9,8 @@ import type * as plannerGatewaySol from "./PlannerGateway.sol";
 export type { plannerGatewaySol };
 import type * as settlementEngineSol from "./SettlementEngine.sol";
 export type { settlementEngineSol };
+import type * as verifierGatewaySol from "./VerifierGateway.sol";
+export type { verifierGatewaySol };
 export type { AgentRegistry } from "./AgentRegistry";
 export type { MockERC20 } from "./MockERC20";
 export type { PaymentIntentRegistry } from "./PaymentIntentRegistry";

@@ -6,10 +6,10 @@ import { somniaTestnet } from "../agents/shared/chain";
 import NegotiationGatewayArtifact from "../artifacts/contracts/core/NegotiationGateway.sol/NegotiationGateway.json" assert { type: "json" };
 import VerifierGatewayArtifact from "../artifacts/contracts/core/VerifierGateway.sol/VerifierGateway.json" assert { type: "json" };
 
-const PLATFORM        = "0xaD3101C37F091593fEe7cb471e92b5E9A1205194";
-const PIR             = "0x83985c6f5572c527e3247f5640c826649aA300fa";
+const PLATFORM        = "0x037Bb9C718F3f7fe5eCBDB0b600D607b52706776";
+const PIR             = "0xf7b4f680aaddab9247423e1d833e038c760aa1e6";
 const AGENT_REG       = "0x76c4EEd426Ead6dC780Fa90c0E0F3b763D60652a";
-const SETTLEMENT      = "0xC162ea31883382131a902C9b3C6C12Af2FdF8C9b";
+const SETTLEMENT      = "0x05e4f7a539d9b4e1629a0bce11722d9d918d38cf";
 const RECEIPT_REG     = "0xec7e01574cbcaEcC7cEaDDa6fcA4BA4cfA334503";
 const EXECUTOR_FEED   = "https://zazapay-executor-feed.onrender.com/quotes";
 

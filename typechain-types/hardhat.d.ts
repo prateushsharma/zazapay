@@ -146,6 +146,18 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.SettlementEngine__factory>;
     getContractFactory(
+      name: "IAgentPlatform",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IAgentPlatform__factory>;
+    getContractFactory(
+      name: "ILLMAgent",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ILLMAgent__factory>;
+    getContractFactory(
+      name: "VerifierGateway",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.VerifierGateway__factory>;
+    getContractFactory(
       name: "PaymentLib",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.PaymentLib__factory>;
@@ -316,6 +328,21 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.SettlementEngine>;
     getContractAt(
+      name: "IAgentPlatform",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IAgentPlatform>;
+    getContractAt(
+      name: "ILLMAgent",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ILLMAgent>;
+    getContractAt(
+      name: "VerifierGateway",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.VerifierGateway>;
+    getContractAt(
       name: "PaymentLib",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -454,6 +481,18 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.SettlementEngine>;
     deployContract(
+      name: "IAgentPlatform",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IAgentPlatform>;
+    deployContract(
+      name: "ILLMAgent",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ILLMAgent>;
+    deployContract(
+      name: "VerifierGateway",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.VerifierGateway>;
+    deployContract(
       name: "PaymentLib",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.PaymentLib>;
@@ -623,6 +662,21 @@ declare module "hardhat/types/runtime" {
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.SettlementEngine>;
+    deployContract(
+      name: "IAgentPlatform",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IAgentPlatform>;
+    deployContract(
+      name: "ILLMAgent",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ILLMAgent>;
+    deployContract(
+      name: "VerifierGateway",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.VerifierGateway>;
     deployContract(
       name: "PaymentLib",
       args: any[],

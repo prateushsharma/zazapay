@@ -113,8 +113,8 @@ contract PlannerGateway is SomniaEventHandler, Ownable {
 
         SomniaExtensions.SubscriptionOptions memory options = SomniaExtensions.SubscriptionOptions({
             priorityFeePerGas: 1_000_000_000,
-            maxFeePerGas: 10_000_000_000,
-            gasLimit: 2_000_000
+            maxFeePerGas: 100_000_000_000,
+            gasLimit: 10_000_000
         });
 
         _subscriptionId = SomniaExtensions.subscribe(address(this), filter, options);

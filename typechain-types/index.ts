@@ -62,5 +62,9 @@ export type { PlannerGateway } from "./contracts/core/PlannerGateway.sol/Planner
 export { PlannerGateway__factory } from "./factories/contracts/core/PlannerGateway.sol/PlannerGateway__factory";
 export type { SettlementEngine } from "./contracts/core/SettlementEngine.sol/SettlementEngine";
 export { SettlementEngine__factory } from "./factories/contracts/core/SettlementEngine.sol/SettlementEngine__factory";
+export type { IAgentPlatform } from "./contracts/core/VerifierGateway.sol/IAgentPlatform";
+export { IAgentPlatform__factory } from "./factories/contracts/core/VerifierGateway.sol/IAgentPlatform__factory";
+export type { VerifierGateway } from "./contracts/core/VerifierGateway.sol/VerifierGateway";
+export { VerifierGateway__factory } from "./factories/contracts/core/VerifierGateway.sol/VerifierGateway__factory";
 export type { PaymentLib } from "./contracts/libraries/PaymentLib";
 export { PaymentLib__factory } from "./factories/contracts/libraries/PaymentLib__factory";

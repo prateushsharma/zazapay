@@ -29,6 +29,8 @@ library PaymentLib {
         uint256 createdAt;
         uint256 deadline;
         string context;
+        address selectedExecutor;
+        uint256 executorFee;
     }
 
     error BpsMismatch(uint256 total);

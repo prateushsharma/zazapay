@@ -83,6 +83,16 @@ const _abi = [
             name: "context",
             type: "string",
           },
+          {
+            internalType: "address",
+            name: "selectedExecutor",
+            type: "address",
+          },
+          {
+            internalType: "uint256",
+            name: "executorFee",
+            type: "uint256",
+          },
         ],
         internalType: "struct PaymentLib.PaymentIntent",
         name: "",

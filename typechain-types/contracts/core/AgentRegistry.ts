@@ -54,6 +54,7 @@ export interface AgentRegistryInterface extends Interface {
   getFunction(
     nameOrSignature:
       | "deactivateAgent"
+      | "getActiveExecutors"
       | "getAgent"
       | "getAllAgents"
       | "isActiveAgent"
@@ -77,6 +78,10 @@ export interface AgentRegistryInterface extends Interface {
   encodeFunctionData(
     functionFragment: "deactivateAgent",
     values: [AddressLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getActiveExecutors",
+    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "getAgent",
@@ -114,6 +119,10 @@ export interface AgentRegistryInterface extends Interface {
 
   decodeFunctionResult(
     functionFragment: "deactivateAgent",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getActiveExecutors",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "getAgent", data: BytesLike): Result;
@@ -261,6 +270,8 @@ export interface AgentRegistry extends BaseContract {
     "nonpayable"
   >;
 
+  getActiveExecutors: TypedContractMethod<[], [string[]], "view">;
+
   getAgent: TypedContractMethod<
     [wallet: AddressLike],
     [AgentRegistry.AgentStructOutput],
@@ -306,6 +317,9 @@ export interface AgentRegistry extends BaseContract {
   getFunction(
     nameOrSignature: "deactivateAgent"
   ): TypedContractMethod<[wallet: AddressLike], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "getActiveExecutors"
+  ): TypedContractMethod<[], [string[]], "view">;
   getFunction(
     nameOrSignature: "getAgent"
   ): TypedContractMethod<

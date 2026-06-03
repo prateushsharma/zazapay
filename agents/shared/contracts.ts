@@ -8,10 +8,10 @@ import PaymentIntentRegistryArtifact from "../../artifacts/contracts/core/Paymen
 
 export const CONTRACT_ADDRESSES = {
   AgentRegistry:         "0x1fb017bd45363c1b525e5a4b638ffdb65df51e59" as Address,
-  SettlementEngine:      "0xC162ea31883382131a902C9b3C6C12Af2FdF8C9b" as Address,
-  PaymentIntentRegistry: "0x83985c6f5572c527e3247f5640c826649aA300fa" as Address,
-  NegotiationGateway:    "0xd521f80411e93ef7bdc537892c34fb2cc76b8988" as Address,
-  VerifierGateway:       "0x2a3afbd1e8bbe6e9fedcce518a5e9e8ed00d65c2" as Address,
+  SettlementEngine:      "0x05e4f7a539d9b4e1629a0bce11722d9d918d38cf" as Address,
+  PaymentIntentRegistry: "0xf7b4f680aaddab9247423e1d833e038c760aa1e6" as Address,
+  NegotiationGateway:    "0xca81fcdf81f991cf5eb8b1ec2b86b864016ae6c0" as Address,
+  VerifierGateway:       "0x454e26a4a621cbf271d03a5c55053c71b846e408" as Address,
 } as const;
 
 export const AGENT_REGISTRY_ABI    = AgentRegistryArtifact.abi;
