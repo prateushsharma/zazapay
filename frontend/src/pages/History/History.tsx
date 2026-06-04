@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import IntentCard from '../../components/IntentCard/IntentCard'
-import { api, PaymentIntent } from '../../lib/api'
+import { api } from '../../lib/api'
+import type { PaymentIntent } from '../../lib/api'
 import './History.css'
 
 export default function History() {

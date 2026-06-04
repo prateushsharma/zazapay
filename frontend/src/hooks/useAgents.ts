@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
-import { api, Agent } from '../lib/api'
+import { api } from '../lib/api'
+import type { Agent } from '../lib/api'
 import { POLL_INTERVAL_MS } from '../lib/constants'
 
 export function useAgents() {

@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Agent } from '../../lib/api'
+import type { Agent } from '../../lib/api'
 import { truncateAddr, formatTimestamp } from '../../lib/chain'
 import './AgentPanel.css'
 

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
-import { api, TraceEvent } from '../lib/api'
+import { api } from '../lib/api'
+import type { TraceEvent } from '../lib/api'
 import { POLL_INTERVAL_MS } from '../lib/constants'
 
 export function useTrace(intentId: string | null) {

@@ -1,4 +1,4 @@
-import { API_BASE } from './constants'
+const API_BASE = 'http://localhost:3000'
 
 export interface Recipient {
   role: string

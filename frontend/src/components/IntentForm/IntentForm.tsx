@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts'
-import { api, CreateIntentPayload } from '../../lib/api'
+import { api } from '../../lib/api'
+import type { CreateIntentPayload } from '../../lib/api'
 import { DEFAULT_RECIPIENTS } from '../../lib/constants'
 import './IntentForm.css'
 
