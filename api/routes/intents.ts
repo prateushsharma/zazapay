@@ -26,11 +26,9 @@ const STATUS_LABELS: Record<number, string> = {
   0: "CREATED",
   1: "PLANNED",
   2: "EXECUTOR_SELECTED",
-  3: "EXECUTING",
-  4: "SETTLED",
-  5: "VERIFIED",
-  6: "FAILED",
-  7: "EXPIRED",
+  3: "SETTLED",
+  4: "VERIFIED",
+  5: "FAILED",
 };
 
 function getApiClient() {

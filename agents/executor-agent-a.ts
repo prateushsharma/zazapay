@@ -21,7 +21,7 @@ const STATUS_EXECUTOR_SELECTED = 2n;
 
 // keccak256("StatusUpdated(bytes32,uint8,uint8)") — grep confirms 3-arg variant
 // If your StatusUpdated only has 2 args: keccak256("StatusUpdated(bytes32,uint8)")
-const STATUS_UPDATED_TOPIC = keccak256(toHex("StatusUpdated(bytes32,uint8,uint8)"));
+const STATUS_UPDATED_TOPIC = keccak256(toHex("StatusUpdated(bytes32,uint8)"));
 
 let failedOnce = false;
 
@@ -131,7 +131,7 @@ async function main(): Promise<void> {
       // Decode data field: 2 uint8 values packed as 2x uint256 in ABI
       const dataHex: `0x${string}` = logEntry.data;
       // Each uint8 is padded to 32 bytes in ABI encoding
-      newStatus = BigInt("0x" + dataHex.slice(66, 130)); // second uint8 = newStatus
+      newStatus = BigInt("0x" + dataHex.slice(2, 66)); // only non-indexed field = newStatus
     } catch {
       log(`Failed to decode log data`);
       return;

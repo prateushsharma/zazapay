@@ -21,6 +21,8 @@ const PLANNERS = [
 
 // NegotiationGateway instances
 const NEGOTIATIONS = [
+  "0x901cc568d53f9e2da6dfa7b1ca5d456568c3a05b",
+  "0xca81fcdf81f991cf5eb8b1ec2b86b864016ae6c0",
   "0xffc305a65cf5617c436237f6890abb83168e8405",
   "0x9feb342cddc0d8b7ee0755be39ae70315d95cacf",
   "0x276347f0c4b753e7c5f1188746c721e8704cb156",

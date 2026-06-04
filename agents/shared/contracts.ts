@@ -7,10 +7,10 @@ import SettlementEngineArtifact from "../../artifacts/contracts/core/SettlementE
 import PaymentIntentRegistryArtifact from "../../artifacts/contracts/core/PaymentIntentRegistry.sol/PaymentIntentRegistry.json" assert { type: "json" };
 
 export const CONTRACT_ADDRESSES = {
-  AgentRegistry:         "0x1fb017bd45363c1b525e5a4b638ffdb65df51e59" as Address,
+  AgentRegistry:         "0x963e386d0c3e0f54ab2a12fe67b4c3fc78443ff7" as Address,
   SettlementEngine:      "0x05e4f7a539d9b4e1629a0bce11722d9d918d38cf" as Address,
   PaymentIntentRegistry: "0xf7b4f680aaddab9247423e1d833e038c760aa1e6" as Address,
-  NegotiationGateway:    "0xca81fcdf81f991cf5eb8b1ec2b86b864016ae6c0" as Address,
+  NegotiationGateway:    "0x4d4742ddb37e9f98a990c0c3edaac23dae0c4928" as Address,
   VerifierGateway:       "0x454e26a4a621cbf271d03a5c55053c71b846e408" as Address,
 } as const;
 

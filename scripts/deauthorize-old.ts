@@ -13,22 +13,17 @@ const SET_AUTH_ABI = [{
   type: "function",
 }] as const;
 
-const CALLERS = [
-  { addr: "0xc156d8137b8a9b0de18d4001a75e9448e3d3ea6b", label: "PlannerGateway"     },
-  { addr: "0x901cc568d53f9e2da6dfa7b1ca5d456568c3a05b", label: "NegotiationGateway" },
-  { addr: "0x454e26a4a621cbf271d03a5c55053c71b846e408", label: "VerifierGateway"    },
-  { addr: "0x05e4f7a539d9b4e1629a0bce11722d9d918d38cf", label: "SettlementEngine"   },
-] as const;
+const OLD: { addr: Address; label: string }[] = [
+  { addr: "0xca81fcdf81f991cf5eb8b1ec2b86b864016ae6c0", label: "OldNegotiationGateway-1" },
+  { addr: "0x901cc568d53f9e2da6dfa7b1ca5d456568c3a05b", label: "OldNegotiationGateway-2" },
+];
 
 function sleep(ms: number) { return new Promise(r => setTimeout(r, ms)); }
-
-async function withRetry<T>(fn: () => Promise<T>, label: string, attempts = 5): Promise<T> {
+async function withRetry<T>(fn: () => Promise<T>, attempts = 5): Promise<T> {
   for (let i = 0; i < attempts; i++) {
-    try {
-      return await fn();
-    } catch (err: any) {
+    try { return await fn(); } catch (err: any) {
       if (i === attempts - 1) throw err;
-      console.log(`[retry ${i+1}/${attempts}] ${label} failed: ${err?.shortMessage ?? err?.message}. Waiting 10s...`);
+      console.log(`Retry ${i+1}: ${err?.shortMessage ?? err?.message}. Waiting 10s...`);
       await sleep(10000);
     }
   }
@@ -48,21 +43,20 @@ async function main() {
     transport: http("https://dream-rpc.somnia.network", { timeout: 60_000 }),
   });
 
-  console.log(`Deployer: ${account.address}`);
-
-  for (const { addr, label } of CALLERS) {
-    console.log(`Authorizing ${label} (${addr})...`);
+  for (const { addr, label } of OLD) {
+    console.log(`Deauthorizing ${label} (${addr})...`);
     const hash = await withRetry(() => walletClient.writeContract({
       address: PIR,
       abi: SET_AUTH_ABI,
       functionName: "setAuthorizedCaller",
-      args: [addr as Address, true],
-    }), label);
-    await withRetry(() => publicClient.waitForTransactionReceipt({ hash }), `receipt-${label}`);
-    console.log(`Authorized ${label}. tx=${hash}`);
-    await sleep(2000);
+      args: [addr, false],
+    }));
+    await withRetry(() => publicClient.waitForTransactionReceipt({ hash }));
+    console.log(`Deauthorized. tx=${hash}`);
+    await sleep(1000);
   }
   console.log("Done.");
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
+// run separately if needed

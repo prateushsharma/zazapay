@@ -16,7 +16,7 @@ function log(msg: string): void {
 }
 
 const STATUS_EXECUTOR_SELECTED = 2n;
-const STATUS_UPDATED_TOPIC = keccak256(toHex("StatusUpdated(bytes32,uint8,uint8)"));
+const STATUS_UPDATED_TOPIC = keccak256(toHex("StatusUpdated(bytes32,uint8)"));
 
 async function registerIfNeeded(
   publicClient: ReturnType<typeof makeClients>["publicClient"],
@@ -114,7 +114,7 @@ async function main(): Promise<void> {
     let newStatus: bigint;
     try {
       const dataHex: `0x${string}` = logEntry.data;
-      newStatus = BigInt("0x" + dataHex.slice(66, 130));
+      newStatus = BigInt("0x" + dataHex.slice(2, 66));
     } catch {
       log(`Failed to decode log data`);
       return;
