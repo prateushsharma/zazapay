@@ -1,0 +1,196 @@
+.intent-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.intent-card:hover {
+  border-color: var(--border-hover);
+  background: rgba(255,255,255,0.02);
+}
+
+.intent-card--expanded {
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
+.intent-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.intent-card__left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.intent-card__id {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.intent-card__status {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  border: 1px solid;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.intent-card__right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.intent-card__amount {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.intent-card__token {
+  font-size: 0.7rem;
+  color: var(--accent-cyan);
+}
+
+.intent-card__time {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+.intent-card__chevron {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+.intent-card__chevron--open {
+  transform: rotate(90deg);
+}
+
+.intent-card__detail {
+  overflow: hidden;
+  margin-top: 14px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.intent-card__detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.intent-card__detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.intent-card__detail-label {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.intent-card__detail-val {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  word-break: break-all;
+}
+
+.intent-card__recipients {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.intent-card__recipient-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.intent-card__recipient {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  background: var(--bg-base);
+  border-radius: var(--radius-sm);
+  font-size: 0.72rem;
+}
+
+.intent-card__recipient-role {
+  color: var(--text-muted);
+  min-width: 56px;
+  text-transform: capitalize;
+}
+
+.intent-card__recipient-addr {
+  color: var(--text-secondary);
+  flex: 1;
+  font-size: 0.68rem;
+}
+
+.intent-card__recipient-bps {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-violet);
+  font-weight: 600;
+}
+
+.intent-card__txhashes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.intent-card__txhash-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.intent-card__txhash-stage {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  min-width: 80px;
+}
+
+.intent-card__txhash-link {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent-cyan);
+}
+
+.intent-card__txhash-link:hover {
+  text-decoration: underline;
+}

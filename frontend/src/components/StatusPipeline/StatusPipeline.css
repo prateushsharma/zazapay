@@ -1,0 +1,140 @@
+.status-pipeline {
+  width: 100%;
+  padding: 24px 20px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.status-pipeline__track {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.status-pipeline__step-wrap {
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 100px;
+}
+
+.status-pipeline__connector {
+  height: 2px;
+  flex: 1;
+  background: var(--border);
+  margin-top: 16px;
+  transition: background 0.4s ease;
+}
+
+.status-pipeline__connector--done {
+  background: var(--accent-violet);
+}
+
+.status-pipeline__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 90px;
+}
+
+.status-pipeline__node {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-base);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  flex-shrink: 0;
+}
+
+.status-pipeline__pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.status-pipeline__empty {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+}
+
+.status-pipeline__label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  text-align: center;
+}
+
+.status-pipeline__name {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+
+.status-pipeline__time {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+.status-pipeline__tx {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--accent-cyan);
+  white-space: nowrap;
+}
+
+.status-pipeline__tx:hover {
+  text-decoration: underline;
+}
+
+.status-pipeline__executor {
+  margin-top: 16px;
+  padding: 10px 14px;
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-pipeline__executor-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.status-pipeline__executor-addr {
+  font-size: 0.72rem;
+  color: var(--accent-violet);
+  word-break: break-all;
+}
+
+.status-pipeline__failed-badge {
+  margin-top: 14px;
+  padding: 8px 14px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius-sm);
+  color: var(--accent-red);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.08em;
+}
